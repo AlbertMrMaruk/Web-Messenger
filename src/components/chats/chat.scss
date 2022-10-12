@@ -1,0 +1,13 @@
+.chat-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 10px;
+  gap: 1rem;
+  img {
+    background-color: $text-secondary;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  }
+}

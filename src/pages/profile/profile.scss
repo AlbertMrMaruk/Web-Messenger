@@ -1,0 +1,47 @@
+.profile-wrapper {
+  margin-top: 3.5rem;
+  width: 885px;
+  .container {
+    width: 750px;
+    margin-top: 0;
+  }
+  .avatar-wrapper {
+    margin: 1rem auto;
+    width: 150px;
+    text-align: center;
+    img {
+      background-color: $text-secondary;
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+    }
+    p {
+      font-size: 21px;
+      color: white;
+      font-weight: 600;
+    }
+  }
+  .profile-form {
+    width: 750px;
+    margin-bottom: 4rem;
+  }
+  .link-red {
+    color: red;
+  }
+  .link-auth {
+    display: block;
+    font-size: 16px;
+    text-align: left;
+    margin: 1rem 0;
+  }
+  .btn {
+    margin-bottom: 2rem;
+  }
+}
+
+.profile-pass-wrapper {
+  margin-top: 10rem;
+  .btn-circle-profile {
+    top: 23rem;
+  }
+}

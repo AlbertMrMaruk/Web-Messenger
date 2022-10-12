@@ -1,0 +1,38 @@
+.btn {
+  width: 350px;
+  padding: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  margin: 1rem auto;
+  a {
+    font-family: $font-main;
+    font-size: 14px;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  &-secondary {
+    background-color: $secondary-color;
+  }
+  &-primary {
+    background-color: #ccc;
+    a {
+      color: black;
+    }
+  }
+  &-circle {
+    border-radius: 60%;
+    width: 35px;
+    height: 35px;
+    border: 8px solid $primary-color;
+    &-profile {
+      position: absolute;
+      top: 22rem;
+      left: 14.5rem;
+    }
+  }
+}

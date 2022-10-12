@@ -1,0 +1,41 @@
+.modal-wrapper {
+  width: 440px;
+  margin: auto;
+  background-color: $third-color;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  h2 {
+    font-family: $font-main;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 2rem;
+  }
+}
+.link-wrapper {
+  margin: 1rem auto;
+  text-align: center;
+}
+.home-wrapper {
+  margin-top: 325px;
+}
+.login-wrapper {
+  margin-top: 244px;
+}
+.signup-wrapper {
+  margin-top: 50px;
+}
+form {
+  margin: auto;
+  width: 370px;
+  margin-top: 1rem;
+}
+.link-auth {
+  font-size: 12px;
+  font-family: $font-main;
+  font-weight: bold;
+  color: $secondary-color;
+  text-decoration: none;
+  text-align: center;
+}
