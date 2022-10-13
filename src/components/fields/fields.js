@@ -1,4 +1,5 @@
 import { field } from "./fields.tmpl";
+
 import Handlebars from "handlebars";
 class Field {
   constructor() {
@@ -9,5 +10,6 @@ class Field {
     return;
   }
 }
+
 const newField = new Field();
 export default newField;

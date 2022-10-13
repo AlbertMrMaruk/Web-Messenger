@@ -2,6 +2,7 @@ import { tmp } from "./auth.tmpl";
 import Handlebars from "handlebars";
 import { newBtn } from "../../components/buttons";
 import { newField } from "../../components/fields";
+
 const template = Handlebars.compile(tmp);
 const block2 = template({
   wrapperClass: "signup-wrapper",
@@ -22,5 +23,6 @@ const block2 = template({
   link: "/login.html",
   linkText: "Есть аккаунт? Войти",
 });
+
 const root = document.querySelector("#root");
 root.insertAdjacentHTML("afterbegin", block2);

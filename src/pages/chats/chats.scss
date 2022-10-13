@@ -8,11 +8,11 @@ aside {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px 0;
-    h1 {
+    &-text {
       font-weight: bold;
       font-size: 30px;
     }
-    img {
+    &-img {
       background-color: $text-secondary;
       width: 40px;
       height: 40px;
@@ -29,5 +29,6 @@ aside {
     margin: 5px 15px 0;
     border-radius: 5px;
     text-align: center;
+    margin-bottom: 1rem;
   }
 }

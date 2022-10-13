@@ -1,6 +1,6 @@
 export const tmp = `
 <div class="modal-wrapper {{wrapperClass}}">
-    <h2>{{method}}</h2>
+    <h2 class="modal-wrapper-text">{{method}}</h2>
     <form action="">
         {{#each inputs}}
             {{> myField this}}

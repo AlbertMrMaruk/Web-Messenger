@@ -1,5 +1,6 @@
 import Handlebars from "handlebars";
 import { button } from "./button.tmpl";
+
 class Button {
   constructor() {
     this.render();
@@ -9,5 +10,6 @@ class Button {
     return;
   }
 }
+
 const newBtn = new Button();
 export default newBtn;

@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/AlbertMrMaruk/pract-module-1#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@parcel/transformer-sass": "^2.7.0",
-    "express": "^4.18.1",
-    "parcel": "^2.7.0"
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@parcel/transformer-sass": "2.7.0",
+    "express": "4.18.1",
+    "parcel": "2.7.0"
   },
   "browserModern": "dist/index.html",
   "targets": {
@@ -37,7 +37,7 @@
     }
   },
   "dependencies": {
-    "handlebars": "^4.7.7",
-    "sass": "^1.55.0"
+    "handlebars": "4.7.7",
+    "sass": "1.55.0"
   }
 }

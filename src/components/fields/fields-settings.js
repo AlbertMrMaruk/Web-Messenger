@@ -1,5 +1,6 @@
 import { fieldSettings } from "./fields-settings.tmpl";
 import Handlebars from "handlebars";
+
 class FieldSettings {
   constructor() {
     this.render();
@@ -9,5 +10,6 @@ class FieldSettings {
     return;
   }
 }
+
 const newFieldSettings = new FieldSettings();
 export default newFieldSettings;

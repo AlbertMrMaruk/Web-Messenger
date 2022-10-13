@@ -2,6 +2,7 @@ import { profile } from "./profile.tmpl";
 import Handlebars from "handlebars";
 import { newBtn } from "../../components/buttons";
 import { newFieldSettings } from "../../components/fields";
+
 const template = Handlebars.compile(profile);
 const block = template({
   name: "Андрей",
@@ -55,5 +56,6 @@ const block = template({
     wrapperClass: "btn btn-secondary btn-circle btn-circle-profile",
   },
 });
+
 const root = document.querySelector("#root");
 root.insertAdjacentHTML("afterbegin", block);

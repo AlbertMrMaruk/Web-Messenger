@@ -3,8 +3,9 @@
 @import "../components/buttons/button.scss";
 @import "../components/fields/fields.scss";
 @import "../pages/profile/profile.scss";
-@import "../components//chats/chat.scss";
+@import "../components/chats/chat.scss";
 @import "../pages/chats/chats.scss";
+
 body {
   background-color: $primary-color;
   font-family: $font-main;
@@ -17,16 +18,34 @@ body {
   text-align: center;
   margin-top: 20%;
   color: white;
-  h2 {
+  &-header {
     font-size: 55px;
     margin-bottom: 2rem;
   }
-  p {
+  &-text {
     font-size: 24px;
     color: $border;
     margin: 2rem;
   }
   .link-auth {
     font-size: 16px;
+  }
+}
+.text- {
+  &sm {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  &grey {
+    color: $text-secondary;
+  }
+  &bold {
+    font-weight: 600;
+  }
+  &light {
+    font-weight: 300;
+  }
+  &left {
+    text-align: left;
   }
 }

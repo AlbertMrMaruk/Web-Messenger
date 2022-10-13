@@ -1,5 +1,6 @@
 import Handlebars from "handlebars";
 import { chat } from "./chat.tmpl";
+
 class Chat {
   constructor() {
     this.render();
@@ -9,5 +10,6 @@ class Chat {
     return;
   }
 }
+
 const newChat = new Chat();
 export default newChat;

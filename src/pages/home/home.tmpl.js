@@ -1,6 +1,6 @@
 export const home = `
 <div class="modal-wrapper {{wrapperClass}}">
-    <h2>Добро пожаловать!</h2>
+    <h2 class="modal-wrapper-text">Добро пожаловать!</h2>
     {{> myBtn btnContext}}
     {{> myBtn btnContext2}}
 </div>

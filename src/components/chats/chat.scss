@@ -1,13 +1,39 @@
 .chat-wrapper {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  padding: 10px;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
   gap: 1rem;
-  img {
+  &-img {
     background-color: $text-secondary;
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+  }
+  &:hover {
+    background: #2c3850;
+  }
+}
+.chat-info-wrapper {
+  display: grid;
+  justify-content: space-between;
+  width: 100%;
+  text-align: right;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  &-text {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+  }
+  &-time {
+    margin: 0;
+  }
+  &-message {
+    margin-top: 0.6rem;
+    margin-bottom: 0;
   }
 }
