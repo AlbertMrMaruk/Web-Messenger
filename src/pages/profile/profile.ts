@@ -1,6 +1,6 @@
 import profile from "./profile.tmpl";
 import { render } from "../../utils/renderDOM";
-import Block from "../../components/Block";
+import Block from "../../components/block";
 import FieldSettings from "../../components/fields/fields-settings";
 class ProfileP extends Block {
   constructor(props: {}) {

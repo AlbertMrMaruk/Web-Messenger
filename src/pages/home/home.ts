@@ -1,5 +1,5 @@
 import home from "./home.tmpl";
-import Block from "../../components/Block";
+import Block from "../../components/block";
 import { render } from "../../utils/renderDOM";
 
 class HomeP extends Block {

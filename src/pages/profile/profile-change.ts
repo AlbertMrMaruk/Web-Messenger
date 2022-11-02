@@ -1,6 +1,6 @@
 import profileChange from "./profile-change.tmpl";
 import Button from "../../components/buttons/button";
-import Block from "../../components/Block";
+import Block from "../../components/block";
 import FieldSettings from "../../components/fields/fields-settings";
 import { render } from "../../utils/renderDOM";
 import checkField from "../../utils/checkField";

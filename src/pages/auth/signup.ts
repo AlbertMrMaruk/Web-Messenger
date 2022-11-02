@@ -1,6 +1,6 @@
 import tmp from "./auth.tmpl";
 import { render } from "../../utils/renderDOM";
-import Block from "../../components/Block";
+import Block from "../../components/block";
 import Field from "../../components/fields/fields";
 import Button from "../../components/buttons/button";
 import checkField from "../../utils/checkField";

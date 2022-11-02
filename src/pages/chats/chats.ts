@@ -1,6 +1,6 @@
 import chats from "./chats.tmpl";
 import { render } from "../../utils/renderDOM";
-import Block from "../../components/Block";
+import Block from "../../components/block";
 import Chat from "../../components/chats/chat";
 import Field from "../../components/fields/fields";
 import checkField from "../../utils/checkField";
