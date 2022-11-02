@@ -1,0 +1,18 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-hex-case": "lower",
+    "import-notation": "string"
+  },
+  "ignoreFiles": [
+    "build/*",
+    ".parcel-cache/*",
+    "node_modules/*",
+    "src/*/*.ts",
+    "src/*/*/*.ts",
+    "*.html",
+    "static/*.html",
+    "dist/*",
+    "*"
+  ]
+}

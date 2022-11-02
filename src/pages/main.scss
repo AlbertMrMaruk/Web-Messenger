@@ -12,40 +12,49 @@ body {
   padding: 0;
   margin: 0;
 }
+
 .container {
   width: 1170px;
   margin: auto;
   text-align: center;
   margin-top: 20%;
   color: white;
+
   &-header {
     font-size: 55px;
     margin-bottom: 2rem;
   }
+
   &-text {
     font-size: 24px;
     color: $border;
     margin: 2rem;
   }
+
   .link-auth {
     font-size: 16px;
   }
 }
-.text- {
-  &sm {
+
+.text {
+  &-sm {
     font-size: 13px;
     font-weight: 500;
   }
-  &grey {
+
+  &-grey {
     color: $text-secondary;
   }
-  &bold {
+
+  &-bold {
     font-weight: 600;
   }
-  &light {
+
+  &-light {
     font-weight: 300;
   }
-  &left {
+
+  &-left {
     text-align: left;
   }
 }
