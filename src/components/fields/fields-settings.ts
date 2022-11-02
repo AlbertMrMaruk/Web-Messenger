@@ -1,5 +1,5 @@
 import fieldSettings from "./fields-settings.tmpl";
-import Block from "../Block";
+import Block from "../block";
 
 export default class FieldSettings extends Block {
   constructor(props: {}) {

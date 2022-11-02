@@ -1,4 +1,4 @@
-import Block from "../Block";
+import Block from "../block";
 import button from "./button.tmpl";
 
 export default class Button extends Block {

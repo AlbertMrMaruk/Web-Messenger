@@ -1,4 +1,4 @@
-import Block from "../Block";
+import Block from "../block";
 import chat from "./chat.tmpl";
 
 export default class Chat extends Block {
