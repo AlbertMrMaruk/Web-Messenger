@@ -6,7 +6,7 @@
 @import "../components/chats/chat.scss";
 @import "../pages/chats/chats.scss";
 
-body {
+.body {
   background-color: $primary-color;
   font-family: $font-main;
   padding: 0;
@@ -57,4 +57,9 @@ body {
   &-left {
     text-align: left;
   }
+}
+
+.links-wrapper {
+  list-style: none;
+  padding: 0;
 }

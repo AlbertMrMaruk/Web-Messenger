@@ -1,7 +1,7 @@
 const fieldSettings = `
     <div class="field-wrapper">
         <label class="field-label {{labelClasses}}">{{label}}</label>
-        <input type="{{type}}" class="field-input {{inputClasses}} " name="{{name}}" value="{{value}}" {{#if disabled}}disabled {{/if}}>
+        {{{input1}}}
     </div>
 `;
 export default fieldSettings;

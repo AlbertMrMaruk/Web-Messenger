@@ -12,8 +12,9 @@ const profileChange = `
     {{{field4}}}
     {{{field5}}}
     {{{field6}}}
-    </form>
     {{{btnContext}}}
+    </form>
+    
     </div>
     <div class="btn btn-secondary btn-circle btn-circle-profile">
     <a href="/" class="btn-link "></a>

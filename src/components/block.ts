@@ -7,17 +7,15 @@ enum EVENTS {
   FLOW_CDU = "flow:component-did-update",
   FLOW_RENDER = "flow:render",
 }
-abstract class Block {
+abstract class Block<Props extends { events?: {} }> {
   eventBus: () => EventBus;
   _element: HTMLElement;
   _meta: {
     tagName: string;
     props: {};
   };
-  props: {
-    events?: {};
-  };
-  children: { [key: string]: Block };
+  props: Props;
+  children: { [key: string]: Block<Props> };
   _id: string;
 
   constructor(tagName = "div", propsAndChildren = {}) {
@@ -85,7 +83,7 @@ abstract class Block {
     this.eventBus().emit(EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps: string, newProps: string) {
+  _componentDidUpdate(oldProps: Props, newProps: Props) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -93,7 +91,7 @@ abstract class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps: string, newProps: string) {
+  componentDidUpdate(oldProps: Props, newProps: Props) {
     return oldProps !== newProps;
   }
 
@@ -119,32 +117,20 @@ abstract class Block {
   _addEvents() {
     const events: { [key: string]: () => {} } = this.props.events || {};
     Object.keys(events).forEach((eventName) => {
-      if (eventName === "focus" || eventName === "blur") {
-        this._element
-          .querySelector("input")
-          ?.addEventListener(eventName, events[eventName]);
-      } else {
-        this._element.addEventListener(eventName, events[eventName]);
-      }
+      this._element.children[0]?.addEventListener(eventName, events[eventName]);
     });
   }
   _removeEvents() {
     const events: { [key: string]: () => {} } = this.props.events || {};
-    Object.keys(events).forEach((eventName) => {
-      if (
-        (eventName === "focus" || eventName === "blur") &&
-        this._element.querySelector("input")
-      ) {
-        this._element
-          .querySelector("input")
-          ?.removeEventListener(eventName, events[eventName]);
-      } else {
-        this._element.removeEventListener(eventName, events[eventName]);
-      }
-    });
+    Object.keys(events).forEach((eventName) =>
+      this._element.children[0]?.removeEventListener(
+        eventName,
+        events[eventName]
+      )
+    );
   }
   _getChildren(propsAndChildren: {}) {
-    const children: { [key: string]: Block } = {};
+    const children: { [key: string]: Block<Props> } = {};
     const props: { [key: string]: any } = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {

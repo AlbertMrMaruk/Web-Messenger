@@ -4,9 +4,22 @@ import Block from "../../components/block";
 import Field from "../../components/fields/fields";
 import Button from "../../components/buttons/button";
 import checkField from "../../utils/checkField";
+import blurFocusEvents from "../../utils/inputEventsHandler";
+import Input from "../../components/inputs/inputs";
 
-class loginP extends Block {
-  constructor(props: {}) {
+type loginType = {
+  wrapperClass?: string;
+  method?: string;
+  field1?: Field;
+  field2?: Field;
+  events?: {};
+  btnContext?: Button;
+  link?: string;
+  linkText?: string;
+};
+
+class loginP extends Block<loginType> {
+  constructor(props: loginType) {
     super("div", props);
   }
   render(): HTMLMetaElement {
@@ -19,7 +32,6 @@ class loginP extends Block {
         res[el.name] = el.value;
         return res;
       }, {});
-
       console.log(formData);
     });
     return resEl;
@@ -30,22 +42,20 @@ const loginTemp = new loginP({
   method: "Вход",
   field1: new Field({
     label: "Логин",
-    name: "login",
-    type: "text",
+    input1: new Input({
+      events: blurFocusEvents,
+      name: "login",
+      type: "text",
+    }),
     text: "Неправильный логин",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
   }),
   field2: new Field({
     label: "Пароль",
-    name: "password",
-    type: "password",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
+    input1: new Input({
+      events: blurFocusEvents,
+      name: "password",
+      type: "password",
+    }),
     text: "Неправильный пароль",
   }),
   btnContext: new Button({

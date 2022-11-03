@@ -4,9 +4,18 @@ import Block from "../../components/block";
 import Chat from "../../components/chats/chat";
 import Field from "../../components/fields/fields";
 import checkField from "../../utils/checkField";
+import blurFocusEvents from "../../utils/inputEventsHandler";
+import Input from "../../components/inputs/inputs";
 
-class ChatP extends Block {
-  constructor(props: {}) {
+type chatType = {
+  chat1?: Chat;
+  chat2?: Chat;
+  field1?: Field;
+  events?: {};
+};
+
+class ChatP extends Block<chatType> {
+  constructor(props: chatType) {
     super("div", props);
   }
   render(): HTMLMetaElement {
@@ -39,15 +48,14 @@ const chatTemp = new ChatP({
     sender: "",
   }),
   field1: new Field({
-    type: "text",
-    placeholder: "Сообщение",
+    input1: new Input({
+      type: "text",
+      placeholder: "Сообщение",
+      name: "message",
+      inputClasses: "message-section-form-input",
+    }),
     labelDisable: "disable",
-    name: "message",
-    inputClasses: "message-section-form-input",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
+    events: blurFocusEvents,
   }),
 });
 

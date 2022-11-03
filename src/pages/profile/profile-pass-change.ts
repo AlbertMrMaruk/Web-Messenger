@@ -5,9 +5,20 @@ import FieldSettings from "../../components/fields/fields-settings";
 import { render } from "../../utils/renderDOM";
 import checkField from "../../utils/checkField";
 checkField;
+import blurFocusEvents from "../../utils/inputEventsHandler";
+import Input from "../../components/inputs/inputs";
 
-class ProfilePassChangeP extends Block {
-  constructor(props: {}) {
+type profilePassChangeType = {
+  name?: string;
+  field1?: FieldSettings;
+  field2?: FieldSettings;
+  field3?: FieldSettings;
+  events?: {};
+  btnContext?: Button;
+};
+
+class ProfilePassChangeP extends Block<profilePassChangeType> {
+  constructor(props: profilePassChangeType) {
     super("div", props);
   }
   render(): HTMLMetaElement {
@@ -31,36 +42,33 @@ const profileTemp = new ProfilePassChangeP({
   name: "Андрей",
   field1: new FieldSettings({
     label: "Старый пароль",
-    name: "oldPassword",
-    type: "password",
-    value: "",
-    disabled: false,
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
+    input1: new Input({
+      name: "oldPassword",
+      type: "password",
+      value: "",
+      disabled: false,
+      events: blurFocusEvents,
+    }),
   }),
   field2: new FieldSettings({
     label: "Пароль",
-    name: "newPassword",
-    type: "password",
-    value: "",
-    disabled: false,
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
+    input1: new Input({
+      name: "newPassword",
+      type: "password",
+      value: "",
+      disabled: false,
+      events: blurFocusEvents,
+    }),
   }),
   field3: new FieldSettings({
     label: "Подтвердить пароль",
-    name: "password_confirm",
-    type: "password",
-    value: "",
-    disabled: false,
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
+    input1: new Input({
+      name: "password_confirm",
+      type: "password",
+      value: "",
+      disabled: false,
+      events: blurFocusEvents,
+    }),
   }),
   btnContext: new Button({
     text: "Сохранить",

@@ -7,6 +7,10 @@
     margin-top: 0;
   }
 
+  .profile-form .btn {
+    margin: 3rem auto 0;
+  }
+
   .avatar-wrapper {
     margin: 1rem auto;
     width: 150px;
@@ -24,6 +28,12 @@
       color: white;
       font-weight: 600;
     }
+  }
+
+  .field-input-error {
+    border-right: 5px solid red;
+    padding-right: 5px;
+    margin-right: -5px;
   }
 
   .profile-form {

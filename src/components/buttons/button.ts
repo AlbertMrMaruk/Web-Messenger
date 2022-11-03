@@ -1,8 +1,16 @@
 import Block from "../block";
 import button from "./button.tmpl";
 
-export default class Button extends Block {
-  constructor(props: {}) {
+type buttonType = {
+  name?: string;
+  wrapperClass?: string;
+  innerClass?: string;
+  text?: string;
+  events?: {};
+};
+
+export default class Button extends Block<buttonType> {
+  constructor(props: buttonType) {
     super("div", props);
   }
 

@@ -21,11 +21,13 @@ export default function checkField(input: HTMLInputElement) {
   const regExp = checkRegExp[input.name];
   if (input.value.match(regExp)) {
     input.classList.remove("field-input-error");
-    input.nextElementSibling?.classList.add("tooltip-hidden");
+    input.closest("div")?.nextElementSibling?.classList.add("tooltip-hidden");
     return true;
   } else {
     input.classList.add("field-input-error");
-    input.nextElementSibling?.classList.remove("tooltip-hidden");
+    input
+      .closest("div")
+      ?.nextElementSibling?.classList.remove("tooltip-hidden");
     return false;
   }
 }

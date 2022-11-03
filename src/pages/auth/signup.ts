@@ -4,9 +4,27 @@ import Block from "../../components/block";
 import Field from "../../components/fields/fields";
 import Button from "../../components/buttons/button";
 import checkField from "../../utils/checkField";
+import blurFocusEvents from "../../utils/inputEventsHandler";
+import Input from "../../components/inputs/inputs";
 
-class SignupP extends Block {
-  constructor(props: {}) {
+type signupType = {
+  wrapperClass?: string;
+  method?: string;
+  field1?: Field;
+  field2?: Field;
+  field3?: Field;
+  field4?: Field;
+  field5?: Field;
+  field6?: Field;
+  field7?: Field;
+  events?: {};
+  btnContext?: Button;
+  link?: string;
+  linkText?: string;
+};
+
+class SignupP extends Block<signupType> {
+  constructor(props: signupType) {
     super("div", props);
   }
   render(): HTMLMetaElement {
@@ -31,73 +49,66 @@ const signupTemp = new SignupP({
   method: "Регистрация",
   field1: new Field({
     label: "Почта",
-    name: "email",
-    type: "text",
+    input1: new Input({
+      events: blurFocusEvents,
+      name: "email",
+      type: "text",
+    }),
     text: "Неправильная почта",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
   }),
   field2: new Field({
     label: "Логин",
-    name: "login",
-    type: "text",
+    input1: new Input({
+      events: blurFocusEvents,
+      name: "login",
+      type: "text",
+    }),
     text: "Неправильный логин или логин занят",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
   }),
   field3: new Field({
     label: "Имя",
-    name: "first_name",
-    type: "text",
+    input1: new Input({
+      events: blurFocusEvents,
+      name: "first_name",
+      type: "text",
+    }),
     text: "Имя может содержать только буквы латиницы или кириллицы и должен начинаться с заглавной буквы",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
   }),
   field4: new Field({
     label: "Фамилия",
-    name: "second_name",
-    type: "text",
+    input1: new Input({
+      events: blurFocusEvents,
+      name: "second_name",
+      type: "text",
+    }),
     text: "Фамилия может содержать только буквы латиницы или кириллицы и должна начинаться с заглавной буквы",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
   }),
   field5: new Field({
     label: "Телефон",
-    name: "phone",
-    type: "phone",
+    input1: new Input({
+      events: blurFocusEvents,
+      name: "phone",
+      type: "phone",
+    }),
     text: "Неправильный номер телефона",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
   }),
   field6: new Field({
     label: "Пароль",
-    name: "password",
-    type: "password",
+    input1: new Input({
+      events: blurFocusEvents,
+      name: "password",
+      type: "password",
+    }),
     text: "Пароль должен содержать одну цифру и одну заглавную букву и от 8 символов до 40",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
   }),
   field7: new Field({
     label: "Пароль еще раз",
-    type: "password",
-    name: "password_confirm",
+    input1: new Input({
+      events: blurFocusEvents,
+      type: "password",
+      name: "password_confirm",
+    }),
     text: "Пароли не сходятся",
-    events: {
-      focus: (e: any) => checkField(e.target),
-      blur: (e: any) => checkField(e.target),
-    },
   }),
   btnContext: new Button({
     text: "Создать аккаунт",

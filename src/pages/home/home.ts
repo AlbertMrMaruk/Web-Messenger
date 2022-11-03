@@ -2,8 +2,13 @@ import home from "./home.tmpl";
 import Block from "../../components/block";
 import { render } from "../../utils/renderDOM";
 
-class HomeP extends Block {
-  constructor(props: {}) {
+type homeType = {
+  wrapperClass?: string;
+  events?: {};
+};
+
+class HomeP extends Block<homeType> {
+  constructor(props: homeType) {
     super("div", props);
   }
   render(): HTMLMetaElement {

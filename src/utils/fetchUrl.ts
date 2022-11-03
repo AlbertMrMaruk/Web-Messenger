@@ -9,7 +9,7 @@ enum METHODS {
 type Options = {
   method: METHODS;
   data?: any;
-  headers: { [str: string]: string };
+  headers?: { [str: string]: string };
   timeout?: number;
 };
 
@@ -20,8 +20,13 @@ function queryStringify(data: {}) {
   return `?${entries.join("&")}`;
 }
 
+type HTTPMethod = (
+  url: string,
+  options?: OptionsWithoutMethod
+) => Promise<unknown>;
+
 class HTTPTransport {
-  get = (url: string, options: OptionsWithoutMethod) => {
+  get: HTTPMethod = (url, options = {}) => {
     const queryUrl = options.data
       ? `${url}${queryStringify(options.data)}`
       : url;
@@ -32,13 +37,13 @@ class HTTPTransport {
     );
   };
 
-  put = (url: string, options: OptionsWithoutMethod) =>
+  put: HTTPMethod = (url, options = {}) =>
     this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
 
-  post = (url: string, options: OptionsWithoutMethod) =>
+  post: HTTPMethod = (url, options = {}) =>
     this.request(url, { ...options, method: METHODS.POST }, options.timeout);
 
-  delete = (url: string, options: OptionsWithoutMethod) =>
+  delete: HTTPMethod = (url, options = {}) =>
     this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
   request = (url: string, options: Options, timeout = 5000) => {
     return new Promise((resolve, reject) => {
@@ -57,7 +62,6 @@ class HTTPTransport {
       xhr.onerror = reject;
 
       xhr.timeout = timeout;
-      console.log(xhr.timeout);
       xhr.ontimeout = reject;
 
       if (options.method === METHODS.GET || !options.data) xhr.send();
