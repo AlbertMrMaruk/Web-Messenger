@@ -5,6 +5,13 @@
   color: #fff;
   padding: 10px;
   border-radius: 10px;
+
+  .auth-form {
+    margin: auto;
+    width: 370px;
+    margin-top: 1rem;
+  }
+
   &-text {
     font-family: $font-main;
     text-align: center;
@@ -13,24 +20,24 @@
     margin-bottom: 2rem;
   }
 }
+
 .link-wrapper {
   margin: 1rem auto;
   text-align: center;
 }
+
 .home-wrapper {
-  margin-top: 325px;
+  margin-top: 150px;
 }
+
 .login-wrapper {
   margin-top: 244px;
 }
+
 .signup-wrapper {
-  margin-top: 50px;
+  margin-top: 60px;
 }
-form {
-  margin: auto;
-  width: 370px;
-  margin-top: 1rem;
-}
+
 .link-auth {
   font-size: 12px;
   font-family: $font-main;

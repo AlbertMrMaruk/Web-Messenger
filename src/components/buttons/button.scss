@@ -6,6 +6,7 @@
   text-align: center;
   border-radius: 5px;
   margin: 1rem auto;
+
   &-link {
     font-family: $font-main;
     font-size: 14px;
@@ -15,20 +16,30 @@
     font-weight: bold;
     cursor: pointer;
   }
+
+  &-submit {
+    background: none;
+    border: none;
+  }
+
   &-secondary {
     background-color: $secondary-color;
   }
+
   &-primary {
     background-color: #ccc;
+
     a {
       color: black;
     }
   }
+
   &-circle {
     border-radius: 60%;
     width: 35px;
     height: 35px;
     border: 8px solid $primary-color;
+
     &-profile {
       position: absolute;
       top: 22rem;
