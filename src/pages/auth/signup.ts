@@ -8,6 +8,7 @@ import Input from "../../components/inputs/inputs";
 import connect from "../../api/connect-block";
 import UserController from "../../api/controlers/UserController";
 import RouterManager from "../home/home";
+import Link from "../../components/links/link";
 
 type signupType = {
   wrapperClass?: string;
@@ -21,7 +22,7 @@ type signupType = {
   field7?: Field;
   events?: {};
   btnContext?: Button;
-  link?: string;
+  link?: Link;
   linkText?: string;
 };
 
@@ -95,8 +96,16 @@ const propsSingup: signupType = {
     text: "Создать аккаунт",
     wrapperClass: "btn btn-secondary ",
   }),
-  link: "/login",
-  linkText: "Есть аккаунт? Войти",
+  link: new Link({
+    class: "link-auth",
+    text: "Есть аккаунт? Войти",
+    events: {
+      click: (e: Event) => {
+        e.preventDefault();
+        RouterManager.go("/login");
+      },
+    },
+  }),
 };
 
 class SignupP extends Block<signupType> {

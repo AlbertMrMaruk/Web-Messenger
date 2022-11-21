@@ -10,6 +10,7 @@ import LoginController from "../../api/controlers/LoginController";
 import connect from "../../api/connect-block";
 import RouterManager from "../home/home";
 import store from "../../api/store";
+import Link from "../../components/links/link";
 
 type loginType = {
   wrapperClass?: string;
@@ -17,8 +18,8 @@ type loginType = {
   field1?: Field;
   field2?: Field;
   events?: {};
+  link?: Link;
   btnContext?: Button;
-  link?: string;
   linkText?: string;
 };
 
@@ -47,8 +48,16 @@ const loginTemp: loginType = {
     text: "Войти",
     wrapperClass: "btn btn-secondary",
   }),
-  link: "/signup",
-  linkText: "Нет аккаунта?",
+  link: new Link({
+    class: "link-auth",
+    text: "Нет аккаунта?",
+    events: {
+      click: (e: Event) => {
+        e.preventDefault();
+        RouterManager.go("/signup");
+      },
+    },
+  }),
 };
 
 class LoginP extends Block<loginType> {

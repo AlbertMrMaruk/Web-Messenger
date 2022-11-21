@@ -31,4 +31,4 @@ https://www.figma.com/file/cj3MMqeSNaULn89YllEcMu/Project-Web-App?node-id=1%3A2
 
 ## Опубликованный проект в Netlify:
 
-https://remarkable-sprinkles-194c5e.netlify.app
+https://merry-griffin-3e7a89.netlify.app/chats
