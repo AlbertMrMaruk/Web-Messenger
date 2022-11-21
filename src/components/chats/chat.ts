@@ -6,7 +6,10 @@ type chatType = {
   sender?: string;
   time?: string;
   message?: string;
+  link?: string;
   events?: {};
+  id?: string;
+  index?: string | number;
 };
 
 export default class Chat extends Block<chatType> {

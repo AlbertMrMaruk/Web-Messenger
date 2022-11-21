@@ -4,27 +4,32 @@ const home = `
     <nav>
     <ul  class="links-wrapper">
     <li class="btn btn-secondary">
-        <a href="/login.html" class="btn-link ">Войти</a>
+    {{{link1}}}
     </li>
     <li class="btn btn-primary">
-    <a href="/signup.html" class="btn-link ">Создать аккаунт</a>
+    {{{link2}}}
+
 </li>
     <li class="btn btn-primary">
-    <a href="/chats.html" class="btn-link ">Страница чата</a>
+    {{{link3}}}
+
 </li>
     <li class="btn btn-primary">
-    <a href="/profile.html" class="btn-link ">Страница профиля</a>
+    {{{link4}}}
+  
 </li>
 <li class="btn btn-primary">
-    <a href="/profile-change.html" class="btn-link ">Страница изменения профиля</a>
+{{{link5}}}
 </li>
 <li class="btn btn-primary">
-    <a href="/profile-pass-change.html" class="btn-link ">Страница изменения пароля</a>
+{{{link6}}}
 </li>
     <li class="btn btn-primary">
+    {{{link7}}}
     <a href="/404.html" class="btn-link ">Страница 404</a>
 </li>
     <li class="btn btn-primary">
+    {{{link8}}}
     <a href="/500.html" class="btn-link ">Страница 500</a>
 </li>
     </ul>

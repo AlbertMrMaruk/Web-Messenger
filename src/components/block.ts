@@ -7,7 +7,7 @@ enum EVENTS {
   FLOW_CDU = "flow:component-did-update",
   FLOW_RENDER = "flow:render",
 }
-abstract class Block<Props extends { events?: {} }> {
+class Block<Props extends { events?: {} }> {
   eventBus: () => EventBus;
   _element: HTMLElement;
   _meta: {
@@ -83,11 +83,22 @@ abstract class Block<Props extends { events?: {} }> {
     this.eventBus().emit(EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps: Props, newProps: Props) {
-    const response = this.componentDidUpdate(oldProps, newProps);
+  _componentDidUpdate(newProps: Props[]) {
+    const response = this.componentDidUpdate(newProps[0], newProps[1]);
     if (!response) {
       return;
     }
+    const { children, props } = this._getChildren(newProps[1]);
+    this.children = {
+      ...this.children,
+      ...children,
+    };
+    const deleteChl = props.deleteChl;
+    deleteChl?.forEach((el: string) => {
+      delete this.children[el];
+    });
+
+    this.props = this._makePropsProxy(props);
     this._render();
   }
 
@@ -99,7 +110,6 @@ abstract class Block<Props extends { events?: {} }> {
     if (!nextProps) {
       return;
     }
-
     Object.assign(this.props, nextProps);
   };
 
@@ -131,16 +141,16 @@ abstract class Block<Props extends { events?: {} }> {
   }
   _getChildren(propsAndChildren: {}) {
     const children: { [key: string]: Block<Props> } = {};
-    const props: { [key: string]: any } = {};
+    const propsN: { [key: string]: any } = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
       } else {
-        props[key] = value;
+        propsN[key] = value;
       }
     });
-
+    const props = propsN as { deleteChl?: [] };
     return { children, props };
   }
 
@@ -160,8 +170,11 @@ abstract class Block<Props extends { events?: {} }> {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set(target: any, prop, value) {
+        self
+          .eventBus()
+          .emit(EVENTS.FLOW_CDU, target, { ...target, [prop]: value });
         target[prop] = value;
-        self.eventBus().emit(EVENTS.FLOW_CDU, { ...target }, target);
+
         return true;
       },
       deleteProperty() {

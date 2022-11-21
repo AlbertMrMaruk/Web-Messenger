@@ -1,11 +1,13 @@
 import tmp from "./auth.tmpl";
-import { render } from "../../utils/renderDOM";
 import Block from "../../components/block";
 import Field from "../../components/fields/fields";
 import Button from "../../components/buttons/button";
 import checkField from "../../utils/checkField";
 import blurFocusEvents from "../../utils/inputEventsHandler";
 import Input from "../../components/inputs/inputs";
+import connect from "../../api/connect-block";
+import UserController from "../../api/controlers/UserController";
+import RouterManager from "../home/home";
 
 type signupType = {
   wrapperClass?: string;
@@ -23,28 +25,7 @@ type signupType = {
   linkText?: string;
 };
 
-class SignupP extends Block<signupType> {
-  constructor(props: signupType) {
-    super("div", props);
-  }
-  render(): HTMLMetaElement {
-    const res = this.compile(tmp, this.props);
-    res.querySelector("form")?.addEventListener("submit", (e: any) => {
-      e.preventDefault();
-      const inputs = e.target.querySelectorAll(".field-input");
-      const formData = [...inputs].reduce((res: any, el: HTMLInputElement) => {
-        checkField(el);
-        res[el.name] = el.value;
-        return res;
-      }, {});
-
-      console.log(formData);
-    });
-
-    return res;
-  }
-}
-const signupTemp = new SignupP({
+const propsSingup: signupType = {
   wrapperClass: "signup-wrapper",
   method: "Регистрация",
   field1: new Field({
@@ -114,8 +95,40 @@ const signupTemp = new SignupP({
     text: "Создать аккаунт",
     wrapperClass: "btn btn-secondary ",
   }),
-  link: "/login.html",
+  link: "/login",
   linkText: "Есть аккаунт? Войти",
-});
+};
 
-render("#root", signupTemp);
+class SignupP extends Block<signupType> {
+  constructor() {
+    super("div", propsSingup);
+  }
+  render(): HTMLMetaElement {
+    const res = this.compile(tmp, this.props);
+    res.querySelector("form")?.addEventListener("submit", (e: any) => {
+      e.preventDefault();
+      const inputs = e.target.querySelectorAll(".field-input");
+      const formData = [...inputs].reduce((res: any, el: HTMLInputElement) => {
+        checkField(el);
+        res[el.name] = el.value;
+        return res;
+      }, {});
+      signUp(formData);
+      console.log(formData);
+    });
+    return res;
+  }
+}
+
+async function signUp(formData: any) {
+  await UserController.createUser({
+    data: JSON.stringify(formData),
+  });
+  UserController.getUser();
+  RouterManager.go("/chats");
+}
+
+const withUser = connect((state) => ({ user: state.user }));
+const SignupPC = withUser(SignupP);
+
+export default SignupPC;

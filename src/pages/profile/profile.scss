@@ -17,16 +17,27 @@
     text-align: center;
 
     &-img {
+      &:hover {
+        box-shadow: inset 125px 125px rgba($color: #000, $alpha: 70%);
+      }
+
       background-color: $text-secondary;
       width: 125px;
       height: 125px;
       border-radius: 50%;
+      cursor: pointer;
     }
 
     &-text {
       font-size: 21px;
       color: white;
       font-weight: 600;
+    }
+
+    .avatar-input {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
     }
   }
 
@@ -50,10 +61,6 @@
     font-size: 16px;
     text-align: left;
     margin: 1rem 0;
-  }
-
-  .btn {
-    margin-bottom: 2rem;
   }
 }
 

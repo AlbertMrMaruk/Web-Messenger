@@ -27,7 +27,7 @@ export default class EventBus {
     }
 
     this.listeners[event].forEach(function (listener) {
-      listener({ ...args });
+      listener(args);
     });
   }
 }
