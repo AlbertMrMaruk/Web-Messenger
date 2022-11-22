@@ -10,7 +10,7 @@ import connect from "../../api/connect-block";
 import Avatar from "../../components/avatar/avatar";
 import store from "../../api/store";
 
-type profileType = {
+type ProfileType = {
   name?: string;
   field1?: FieldSettings;
   field2?: FieldSettings;
@@ -25,7 +25,7 @@ type profileType = {
   events?: {};
 };
 
-const profileTemp: profileType = {
+const profileTemp: ProfileType = {
   link1: new Link({
     text: "Изменить данные",
     events: {
@@ -69,7 +69,7 @@ const profileTemp: profileType = {
   }),
 };
 
-class ProfileP extends Block<profileType> {
+class ProfileP extends Block<ProfileType> {
   constructor() {
     super("div", profileTemp);
     UserController.getUser();

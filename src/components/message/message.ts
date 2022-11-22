@@ -1,7 +1,7 @@
 import Block from "../block";
 import message from "./message.tmpl";
 
-type messageType = {
+type MessageType = {
   class?: string;
   type?: string;
   outerClass?: string;
@@ -9,8 +9,8 @@ type messageType = {
   events?: {};
 };
 
-export default class Message extends Block<messageType> {
-  constructor(props: messageType) {
+export default class Message extends Block<MessageType> {
+  constructor(props: MessageType) {
     super("div", props);
   }
 

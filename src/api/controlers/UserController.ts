@@ -7,13 +7,7 @@ import ProfileAvatarApi from "../profile-avatar-api";
 import SearchApi from "../search-api";
 import Chat from "../../components/chats/chat";
 import ChatsController from "./ChatsController";
-
-const baseOptions = {
-  mode: "cors", // Работаем с CORS
-  headers: {
-    "content-type": "application/json", // Данные отправляем в формате JSON
-  },
-};
+import { baseOptions, BASE_URL } from "../../utils/variables";
 
 class UserController {
   public async createUser(props: {}) {
@@ -34,7 +28,7 @@ class UserController {
       store.set("user", {
         ...user,
         avatar: user?.avatar
-          ? `https://ya-praktikum.tech/api/v2/resources/${user.avatar}`
+          ? `${BASE_URL}/resources/${user.avatar}`
           : `https://thumbs.dreamstime.com/b/%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D1%81%D0%BC%D0%B8-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8F-%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D1%8B-%D0%BF%D0%BE-%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E-176256935.jpg`,
       });
     });
@@ -44,7 +38,16 @@ class UserController {
   }
   public async updateUser(props: {}) {
     ProfileApi.update({ ...baseOptions, ...props }).then(
-      (data: XMLHttpRequest) => store.set("user", JSON.parse(data.response))
+      (data: XMLHttpRequest) => {
+        const user = JSON.parse(data.response);
+        store.set("user", {
+          ...user,
+          avatar: user?.avatar
+            ? `${BASE_URL}/resources/${user.avatar}`
+            : `https://thumbs.dreamstime.com/b/%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D1%81%D0%BC%D0%B8-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B0-%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8F-%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D1%8B-%D0%BF%D0%BE-%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E-176256935.jpg`,
+        });
+        console.log(JSON.parse(data.response));
+      }
     );
   }
   public async updatePassword(props: {}) {
@@ -60,7 +63,7 @@ class UserController {
       store.set("profile.modalOff", true);
       store.set("user", {
         ...user,
-        avatar: `https://ya-praktikum.tech/api/v2/resources/${user.avatar}`,
+        avatar: `${BASE_URL}resources/${user.avatar}`,
       });
     });
   }

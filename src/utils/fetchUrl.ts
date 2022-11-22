@@ -1,3 +1,5 @@
+import { BASE_URL } from "./variables";
+
 enum METHODS {
   GET = "GET",
   POST = "POST",
@@ -78,3 +80,7 @@ export default class HTTPTransport {
     });
   };
 }
+
+const chatsAPIInstance = new HTTPTransport(BASE_URL);
+
+export { chatsAPIInstance };

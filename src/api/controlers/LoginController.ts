@@ -1,13 +1,6 @@
 import LoginAPI from "../login-api";
 import store from "../store";
-// import RouterManager from "../../pages/home/home";
-
-const baseOptions = {
-  mode: "cors",
-  headers: {
-    "content-type": "application/json",
-  },
-};
+import { baseOptions } from "../../utils/variables";
 
 class LoginController {
   public async logIn(props: {}) {

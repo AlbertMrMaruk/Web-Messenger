@@ -32,6 +32,26 @@ aside {
   margin-bottom: 1rem;
 }
 
+.new-chats-modal .modal-window-wrapper {
+  margin-top: 18rem;
+  width: 550px;
+  height: 220px;
+
+  .modal-window-wrapper-icon {
+    margin-left: 16.8rem;
+    top: 17.5rem;
+  }
+
+  .search-input {
+    width: 480px;
+  }
+
+  .btn {
+    margin-top: 0.5rem;
+    width: 450px;
+  }
+}
+
 .chats-modal .modal-window-wrapper {
   margin-top: 5rem;
   width: 550px;

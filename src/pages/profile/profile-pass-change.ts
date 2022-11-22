@@ -13,7 +13,7 @@ import RouterManager from "../home/home";
 import Avatar from "../../components/avatar/avatar";
 import store from "../../api/store";
 
-type profilePassChangeType = {
+type ProfilePassChangeType = {
   name?: string;
   field1?: FieldSettings;
   field2?: FieldSettings;
@@ -24,7 +24,7 @@ type profilePassChangeType = {
   btnIcon1: ButtonIcon;
 };
 
-const profilePassChangeTemp: profilePassChangeType = {
+const profilePassChangeTemp: ProfilePassChangeType = {
   name: "Андрей",
   field1: new FieldSettings({
     label: "Старый пароль",
@@ -82,7 +82,7 @@ const profilePassChangeTemp: profilePassChangeType = {
   }),
 };
 
-class ProfilePassChangeP extends Block<profilePassChangeType> {
+class ProfilePassChangeP extends Block<ProfilePassChangeType> {
   constructor() {
     super("div", profilePassChangeTemp);
     UserController.getUser();

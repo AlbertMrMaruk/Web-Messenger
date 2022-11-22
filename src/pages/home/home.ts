@@ -10,7 +10,8 @@ import {
   profileTemp,
 } from "../../../index";
 import Link from "../../components/links/link";
-type homeType = {
+
+type HomeType = {
   wrapperClass?: string;
   events?: {};
   link1?: Link;
@@ -23,7 +24,7 @@ type homeType = {
 
 const RouterManager = new Router("#root");
 
-const homeTemp: homeType = {
+const homeTemp: HomeType = {
   wrapperClass: "home-wrapper",
   link1: new Link({
     text: "Войти",
@@ -87,7 +88,7 @@ const homeTemp: homeType = {
   }),
 };
 
-class HomeP extends Block<homeType> {
+class HomeP extends Block<HomeType> {
   constructor() {
     super("div", homeTemp);
   }

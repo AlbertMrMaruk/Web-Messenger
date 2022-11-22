@@ -1,15 +1,15 @@
 import Block from "../block";
 import buttonIcon from "./button-icon.tmpl";
 
-type buttonIconType = {
+type ButtonIconType = {
   wrapperClass?: string;
   innerClass?: string;
   link?: string;
   events?: {};
 };
 
-export default class ButtonIcon extends Block<buttonIconType> {
-  constructor(props: buttonIconType) {
+export default class ButtonIcon extends Block<ButtonIconType> {
+  constructor(props: ButtonIconType) {
     super("div", props);
   }
 

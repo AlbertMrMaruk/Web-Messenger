@@ -2,7 +2,7 @@ import fieldSettings from "./fields-settings.tmpl";
 import Block from "../block";
 import Input from "../inputs/inputs";
 
-type fieldSetType = {
+type FieldSetType = {
   labelClasses?: string;
   label?: string;
   input1?: Input;
@@ -10,8 +10,8 @@ type fieldSetType = {
   text?: string;
 };
 
-export default class FieldSettings extends Block<fieldSetType> {
-  constructor(props: fieldSetType) {
+export default class FieldSettings extends Block<FieldSetType> {
+  constructor(props: FieldSetType) {
     super("div", props);
   }
 

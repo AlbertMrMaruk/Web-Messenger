@@ -13,7 +13,7 @@ import Modal from "../../components/modal/modal";
 import store from "../../api/store";
 import Avatar from "../../components/avatar/avatar";
 
-type profileChangeType = {
+type ProfileChangeType = {
   name?: string;
   field1?: FieldSettings;
   field2?: FieldSettings;
@@ -29,7 +29,7 @@ type profileChangeType = {
   btnIcon1?: ButtonIcon;
 };
 
-const profileChangeTemp: profileChangeType = {
+const profileChangeTemp: ProfileChangeType = {
   btnContext: new Button({
     text: "Сохранить",
     wrapperClass: "btn btn-secondary",
@@ -54,7 +54,6 @@ const profileChangeTemp: profileChangeType = {
   btnIcon1: new ButtonIcon({
     wrapperClass: "btn btn-secondary btn-circle btn-circle-profile",
     innerClass: "btn-circle-icon fa-solid fa-arrow-left",
-    // link: "/profile",
     events: {
       click: (e: Event) => {
         e.preventDefault();
@@ -64,7 +63,7 @@ const profileChangeTemp: profileChangeType = {
   }),
 };
 
-class ProfileChangeP extends Block<profileChangeType> {
+class ProfileChangeP extends Block<ProfileChangeType> {
   constructor() {
     super("div", profileChangeTemp);
     UserController.getUser();
@@ -80,8 +79,13 @@ class ProfileChangeP extends Block<profileChangeType> {
         res[el.name] = el.value;
         return res;
       }, {});
-      console.log(formData);
-      UserController.updateUser({ data: JSON.stringify(formData) });
+      UserController.updateUser({
+        data: JSON.stringify({
+          ...formData,
+          avatar: store.getState()?.user?.avatar,
+        }),
+      });
+      store.set("user.avatar", store.getState()?.user?.avatar);
       RouterManager.go("/profile");
     };
     const myUserForm = resEl.querySelector("#avatar-form") as HTMLFormElement;
@@ -116,6 +120,7 @@ const withPage = connect((state) => ({
   modal1: new Modal({
     modalOff: state.profile?.modalOff ?? true,
     header: "Загрузите ваш аватар",
+    avatarModal: "dhd",
     buttonIcon: new ButtonIcon({
       events: {
         click: (e: Event) => {

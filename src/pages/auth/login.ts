@@ -12,7 +12,7 @@ import RouterManager from "../home/home";
 import store from "../../api/store";
 import Link from "../../components/links/link";
 
-type loginType = {
+type LoginType = {
   wrapperClass?: string;
   method?: string;
   field1?: Field;
@@ -23,7 +23,7 @@ type loginType = {
   linkText?: string;
 };
 
-const loginTemp: loginType = {
+const loginTemp: LoginType = {
   wrapperClass: "login-wrapper",
   method: "Вход",
   field1: new Field({
@@ -60,7 +60,7 @@ const loginTemp: loginType = {
   }),
 };
 
-class LoginP extends Block<loginType> {
+class LoginP extends Block<LoginType> {
   constructor() {
     super("div", loginTemp);
   }

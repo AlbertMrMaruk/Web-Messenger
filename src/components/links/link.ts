@@ -1,15 +1,15 @@
 import Block from "../block";
 import link from "./link.tmpl";
 
-type linkType = {
+type LinkType = {
   link?: string;
   class?: string;
   text?: string;
   events?: {};
 };
 
-export default class Link extends Block<linkType> {
-  constructor(props: linkType) {
+export default class Link extends Block<LinkType> {
+  constructor(props: LinkType) {
     super("div", props);
   }
 

@@ -1,14 +1,14 @@
 import Block from "../block";
 import avatar from "./avatar.tmpl";
 
-type avatarType = {
+type AvatarType = {
   src?: string;
   class?: string;
   events?: {};
 };
 
-export default class Avatar extends Block<avatarType> {
-  constructor(props: avatarType) {
+export default class Avatar extends Block<AvatarType> {
+  constructor(props: AvatarType) {
     super("div", props);
   }
 

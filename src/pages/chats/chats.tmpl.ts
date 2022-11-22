@@ -82,6 +82,7 @@ const chats = `
 </article>
 {{{modal2}}}
 {{{modal1}}}
+{{{modal3}}}
 `;
 
 export default chats;

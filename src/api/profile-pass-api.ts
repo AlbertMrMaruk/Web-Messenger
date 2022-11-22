@@ -1,13 +1,9 @@
-import HTTPTransport from "../utils/fetchUrl";
+import { chatsAPIInstance } from "../utils/fetchUrl";
 import { BaseAPI } from "./base-api";
-
-const profilePassAPIInstance = new HTTPTransport(
-  "https://ya-praktikum.tech/api/v2"
-);
 
 class ProfilePassAPI extends BaseAPI {
   public update(props: {}) {
-    return profilePassAPIInstance.put("/user/password", props);
+    return chatsAPIInstance.put("/user/password", props);
   }
 }
 

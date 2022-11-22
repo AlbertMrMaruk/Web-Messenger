@@ -10,7 +10,7 @@ import UserController from "../../api/controlers/UserController";
 import RouterManager from "../home/home";
 import Link from "../../components/links/link";
 
-type signupType = {
+type SignupType = {
   wrapperClass?: string;
   method?: string;
   field1?: Field;
@@ -26,7 +26,7 @@ type signupType = {
   linkText?: string;
 };
 
-const propsSingup: signupType = {
+const propsSingup: SignupType = {
   wrapperClass: "signup-wrapper",
   method: "Регистрация",
   field1: new Field({
@@ -108,7 +108,7 @@ const propsSingup: signupType = {
   }),
 };
 
-class SignupP extends Block<signupType> {
+class SignupP extends Block<SignupType> {
   constructor() {
     super("div", propsSingup);
   }

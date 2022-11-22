@@ -1,14 +1,12 @@
-import HTTPTransport from "../utils/fetchUrl";
+import { chatsAPIInstance } from "../utils/fetchUrl";
 import { BaseAPI } from "./base-api";
-
-const userAPIInstance = new HTTPTransport("https://ya-praktikum.tech/api/v2");
 
 class UserAPI extends BaseAPI {
   public create(props: {}) {
-    return userAPIInstance.post("/auth/signup", props);
+    return chatsAPIInstance.post("/auth/signup", props);
   }
   public request(props: {}) {
-    return userAPIInstance.get("/auth/user", props);
+    return chatsAPIInstance.get("/auth/user", props);
   }
 }
 

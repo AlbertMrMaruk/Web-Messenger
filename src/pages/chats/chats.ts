@@ -14,8 +14,9 @@ import Avatar from "../../components/avatar/avatar";
 import RouterManager from "../home/home";
 import Link from "../../components/links/link";
 import Modal from "../../components/modal/modal";
+import Button from "../../components/buttons/button";
 
-type chatType = {
+type ChatType = {
   chat1?: ChatCompP;
   chat2?: ChatCompP;
   field1?: Field;
@@ -24,6 +25,7 @@ type chatType = {
   btnIcon2?: ButtonIcon;
   btnIcon3?: ButtonIcon;
   sender?: string;
+  modal3?: Modal;
   chatOn?: boolean;
   link1?: Link;
   modal1?: Modal;
@@ -31,15 +33,14 @@ type chatType = {
   link2?: Link;
   events?: {};
 };
-const chatTemp: chatType = {
+const chatTemp: ChatType = {
   btnIcon1: new ButtonIcon({
     wrapperClass: "btn btn-secondary btn-circle btn-create-chats",
     innerClass: "btn-circle-icon-chats fa-solid fa-plus",
     events: {
       click: (e: Event) => {
         e.preventDefault();
-        ChatsController.create({ data: JSON.stringify({ title: "my-chat" }) });
-        store.set("chats.modals.modal1.modalOff", false);
+        store.set("chats.modals.modal3.modalOff", false);
       },
     },
   }),
@@ -55,12 +56,10 @@ const chatTemp: chatType = {
   }),
   btnIcon2: new ButtonIcon({
     wrapperClass: "icon-wrapper",
-    // innerClass: "fa-solid fa-ellipsis-vertical",
     innerClass: "fa-solid fa-trash",
     events: {
       click: (e: Event) => {
         e.preventDefault();
-        console.log("sss");
         const state = store.getState();
         ChatsController.delete({
           data: JSON.stringify({ chatId: state.chats.current_chat_id }),
@@ -96,7 +95,7 @@ const chatTemp: chatType = {
   }),
   chatOn: false,
 };
-class ChatP extends Block<chatType> {
+class ChatP extends Block<ChatType> {
   constructor() {
     super("div", chatTemp);
     UserController.getUser();
@@ -106,7 +105,9 @@ class ChatP extends Block<chatType> {
   }
   render(): HTMLMetaElement {
     const resEl = this.compile(chats, this.props);
-    const form = resEl.querySelector("form") as HTMLFormElement;
+    const form = resEl.querySelector(
+      ".message-section-form"
+    ) as HTMLFormElement;
     if (form)
       form.onsubmit = (e: any) => {
         e.preventDefault();
@@ -128,6 +129,20 @@ class ChatP extends Block<chatType> {
         );
         inputs.forEach((el: HTMLInputElement) => (el.value = ""));
         console.log(formData);
+      };
+    const formCreateChat = resEl.querySelector(
+      "#chatname-form"
+    ) as HTMLFormElement;
+    if (formCreateChat)
+      formCreateChat.onsubmit = (e: any) => {
+        e.preventDefault();
+        const formData = new FormData(formCreateChat);
+        ChatsController.create({
+          data: JSON.stringify({ title: formData.get("chatname") }),
+          chatName: formData.get("chatname"),
+        });
+        store.set("chats.modals.modal3.modalOff", true);
+        store.set("chats.modals.modal1.modalOff", false);
       };
     const el = resEl.querySelector("#search-users") as HTMLInputElement;
     if (el)
@@ -187,6 +202,26 @@ const withPage = connect((state) => ({
     }),
     ...state?.chats?.modals?.modal2?.users,
     inputSearch: true,
+  }),
+  modal3: new Modal({
+    modalOff: state.chats?.modals?.modal3?.modalOff ?? true,
+    header: "Название чата",
+    wrapperClass: "new-chats-modal",
+    buttonIcon: new ButtonIcon({
+      events: {
+        click: (e: Event) => {
+          e.preventDefault();
+          store.set("chats.modals.modal3.modalOff", true);
+        },
+      },
+      innerClass: "fa-solid fa-circle-xmark modal-window-wrapper-icon",
+    }),
+    inputText: "t",
+    submit: new Button({
+      text: "Создать",
+      wrapperClass: "btn btn-secondary",
+    }),
+    ...state?.chats?.modals?.modal3?.users,
   }),
   link1: new Link({
     text: "Добавить пользователя",
