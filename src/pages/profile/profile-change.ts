@@ -50,6 +50,7 @@ const profileChangeTemp: ProfileChangeType = {
       text: "Сохранить",
       wrapperClass: "btn btn-secondary",
     }),
+    avatarModal: "FF",
   }),
   btnIcon1: new ButtonIcon({
     wrapperClass: "btn btn-secondary btn-circle btn-circle-profile",

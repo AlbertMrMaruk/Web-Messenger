@@ -102,7 +102,7 @@ const propsSingup: SignupType = {
     events: {
       click: (e: Event) => {
         e.preventDefault();
-        RouterManager.go("/login");
+        RouterManager.go("/");
       },
     },
   }),

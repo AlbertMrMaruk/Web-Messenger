@@ -63,6 +63,7 @@ const loginTemp: LoginType = {
 class LoginP extends Block<LoginType> {
   constructor() {
     super("div", loginTemp);
+    CheckLogged();
   }
   render(): HTMLMetaElement {
     const resEl = this.compile(tmp, this.props);
@@ -87,6 +88,18 @@ async function LogIn(formData: any) {
   });
   UserController.getUser();
   if (store.getState().auth === "OK") RouterManager.go("/chats");
+}
+
+async function CheckLogged() {
+  try {
+    await UserController.getUser();
+    console.log(store.getState().user?.id);
+    if (store.getState().user?.id) {
+      RouterManager.go("/chats");
+    }
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 const withUser = connect((state) => ({ user: state.user }));

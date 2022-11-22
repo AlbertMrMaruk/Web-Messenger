@@ -70,8 +70,9 @@ export default class Router {
     window.onpopstate = (e: Event) => {
       const wind = e.currentTarget as Window;
       this._onRoute(wind.location.pathname);
+      console.log("CONTINUED");
     };
-
+    console.log("STARTED");
     this._onRoute(window.location.pathname);
   }
 

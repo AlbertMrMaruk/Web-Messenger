@@ -53,7 +53,7 @@ const profileTemp: ProfileType = {
       click: (e: Event) => {
         e.preventDefault();
         UserController.logOut();
-        RouterManager.go("/login");
+        RouterManager.go("/");
       },
     },
   }),
