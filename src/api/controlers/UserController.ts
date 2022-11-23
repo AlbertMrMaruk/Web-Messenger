@@ -63,7 +63,7 @@ class UserController {
       store.set("profile.modalOff", true);
       store.set("user", {
         ...user,
-        avatar: `${BASE_URL}resources/${user.avatar}`,
+        avatar: `${BASE_URL}/resources/${user.avatar}`,
       });
     });
   }

@@ -86,6 +86,7 @@ class ProfileChangeP extends Block<ProfileChangeType> {
           avatar: store.getState()?.user?.avatar,
         }),
       });
+      console.log(store.getState()?.user?.avatar);
       store.set("user.avatar", store.getState()?.user?.avatar);
       RouterManager.go("/profile");
     };

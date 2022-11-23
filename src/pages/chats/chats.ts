@@ -142,7 +142,7 @@ class ChatP extends Block<ChatType> {
           chatName: formData.get("chatname"),
         });
         store.set("chats.modals.modal3.modalOff", true);
-        store.set("chats.modals.modal1.modalOff", false);
+        // store.set("chats.modals.modal1.modalOff", false);
       };
     const el = resEl.querySelector("#search-users") as HTMLInputElement;
     if (el)
