@@ -1,0 +1,33 @@
+.message-wrapper {
+  padding: 3px 40px;
+  display: flex;
+  font-size: 16px;
+
+  &-send {
+    justify-content: end;
+  }
+
+  &-receive {
+    justify-content: start;
+  }
+
+  .message {
+    min-width: 20px;
+    max-width: 400px;
+    color: white;
+    padding: 10px 15px;
+
+    &-send {
+      background-color: $secondary-color;
+      border-radius: 5px 5px 0;
+      text-align: right;
+      justify-self: end;
+    }
+
+    &-receive {
+      background-color: $third-color;
+      border-radius: 0 5px 5px;
+      justify-self: start;
+    }
+  }
+}

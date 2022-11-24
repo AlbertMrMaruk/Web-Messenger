@@ -5,7 +5,8 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es5",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "target": "es2022",
+    "moduleResolution": "node"
   }
 }

@@ -1,13 +1,16 @@
 import tmp from "./auth.tmpl";
-import { render } from "../../utils/renderDOM";
 import Block from "../../components/block";
 import Field from "../../components/fields/fields";
 import Button from "../../components/buttons/button";
 import checkField from "../../utils/checkField";
 import blurFocusEvents from "../../utils/inputEventsHandler";
 import Input from "../../components/inputs/inputs";
+import connect from "../../api/connect-block";
+import UserController from "../../api/controlers/UserController";
+import RouterManager from "../home/home";
+import Link from "../../components/links/link";
 
-type signupType = {
+type SignupType = {
   wrapperClass?: string;
   method?: string;
   field1?: Field;
@@ -19,32 +22,11 @@ type signupType = {
   field7?: Field;
   events?: {};
   btnContext?: Button;
-  link?: string;
+  link?: Link;
   linkText?: string;
 };
 
-class SignupP extends Block<signupType> {
-  constructor(props: signupType) {
-    super("div", props);
-  }
-  render(): HTMLMetaElement {
-    const res = this.compile(tmp, this.props);
-    res.querySelector("form")?.addEventListener("submit", (e: any) => {
-      e.preventDefault();
-      const inputs = e.target.querySelectorAll(".field-input");
-      const formData = [...inputs].reduce((res: any, el: HTMLInputElement) => {
-        checkField(el);
-        res[el.name] = el.value;
-        return res;
-      }, {});
-
-      console.log(formData);
-    });
-
-    return res;
-  }
-}
-const signupTemp = new SignupP({
+const propsSingup: SignupType = {
   wrapperClass: "signup-wrapper",
   method: "Регистрация",
   field1: new Field({
@@ -114,8 +96,48 @@ const signupTemp = new SignupP({
     text: "Создать аккаунт",
     wrapperClass: "btn btn-secondary ",
   }),
-  link: "/login.html",
-  linkText: "Есть аккаунт? Войти",
-});
+  link: new Link({
+    class: "link-auth",
+    text: "Есть аккаунт? Войти",
+    events: {
+      click: (e: Event) => {
+        e.preventDefault();
+        RouterManager.go("/");
+      },
+    },
+  }),
+};
 
-render("#root", signupTemp);
+class SignupP extends Block<SignupType> {
+  constructor() {
+    super("div", propsSingup);
+  }
+  render(): HTMLMetaElement {
+    const res = this.compile(tmp, this.props);
+    res.querySelector("form")?.addEventListener("submit", (e: any) => {
+      e.preventDefault();
+      const inputs = e.target.querySelectorAll(".field-input");
+      const formData = [...inputs].reduce((res: any, el: HTMLInputElement) => {
+        checkField(el);
+        res[el.name] = el.value;
+        return res;
+      }, {});
+      signUp(formData);
+      console.log(formData);
+    });
+    return res;
+  }
+}
+
+async function signUp(formData: any) {
+  await UserController.createUser({
+    data: JSON.stringify(formData),
+  });
+  UserController.getUser();
+  RouterManager.go("/chats");
+}
+
+const withUser = connect((state) => ({ user: state.user }));
+const SignupPC = withUser(SignupP);
+
+export default SignupPC;

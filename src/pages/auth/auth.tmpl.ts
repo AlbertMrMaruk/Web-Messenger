@@ -13,7 +13,9 @@ const tmp = `
     </form>
     
 </div>
-<div class="link-wrapper"><a href="{{link}}" class="link-auth" ">{{linkText}}</a></div>
+<div class="link-wrapper">
+{{{link}}}
+<a href="{{link}}" class="link-auth" ">{{linkText}}</a></div>
 `;
 
 export default tmp;

@@ -1,43 +1,29 @@
 import tmp from "./auth.tmpl";
-import { render } from "../../utils/renderDOM";
 import Block from "../../components/block";
 import Field from "../../components/fields/fields";
 import Button from "../../components/buttons/button";
 import checkField from "../../utils/checkField";
 import blurFocusEvents from "../../utils/inputEventsHandler";
 import Input from "../../components/inputs/inputs";
+import UserController from "../../api/controlers/UserController";
+import LoginController from "../../api/controlers/LoginController";
+import connect from "../../api/connect-block";
+import RouterManager from "../home/home";
+import store from "../../api/store";
+import Link from "../../components/links/link";
 
-type loginType = {
+type LoginType = {
   wrapperClass?: string;
   method?: string;
   field1?: Field;
   field2?: Field;
   events?: {};
+  link?: Link;
   btnContext?: Button;
-  link?: string;
   linkText?: string;
 };
 
-class loginP extends Block<loginType> {
-  constructor(props: loginType) {
-    super("div", props);
-  }
-  render(): HTMLMetaElement {
-    const resEl = this.compile(tmp, this.props);
-    resEl.querySelector("form")?.addEventListener("submit", (e: any) => {
-      e.preventDefault();
-      const inputs = e.target.querySelectorAll(".field-input");
-      const formData = [...inputs].reduce((res: any, el: HTMLInputElement) => {
-        checkField(el);
-        res[el.name] = el.value;
-        return res;
-      }, {});
-      console.log(formData);
-    });
-    return resEl;
-  }
-}
-const loginTemp = new loginP({
+const loginTemp: LoginType = {
   wrapperClass: "login-wrapper",
   method: "Вход",
   field1: new Field({
@@ -62,8 +48,61 @@ const loginTemp = new loginP({
     text: "Войти",
     wrapperClass: "btn btn-secondary",
   }),
-  link: "/signup.html",
-  linkText: "Нет аккаунта?",
-});
+  link: new Link({
+    class: "link-auth",
+    text: "Нет аккаунта?",
+    events: {
+      click: (e: Event) => {
+        e.preventDefault();
+        RouterManager.go("/signup");
+      },
+    },
+  }),
+};
 
-render("#root", loginTemp);
+class LoginP extends Block<LoginType> {
+  constructor() {
+    super("div", loginTemp);
+    CheckLogged();
+  }
+  render(): HTMLMetaElement {
+    const resEl = this.compile(tmp, this.props);
+    resEl.querySelector("form")?.addEventListener("submit", (e: any) => {
+      e.preventDefault();
+      const inputs = e.target.querySelectorAll(".field-input");
+      const formData = [...inputs].reduce((res: any, el: HTMLInputElement) => {
+        checkField(el);
+        res[el.name] = el.value;
+        return res;
+      }, {});
+      LogIn(formData);
+      console.log(formData);
+    });
+    return resEl;
+  }
+}
+
+async function LogIn(formData: any) {
+  await LoginController.logIn({
+    data: JSON.stringify(formData),
+  });
+  UserController.getUser();
+  if (store.getState().auth === "OK") RouterManager.go("/chats");
+}
+
+async function CheckLogged() {
+  try {
+    await UserController.getUser();
+    console.log(store.getState().user?.id);
+    if (store.getState().user?.id) {
+      RouterManager.go("/chats");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const withUser = connect((state) => ({ user: state.user }));
+const LoginPC = withUser(LoginP);
+
+export default LoginPC;

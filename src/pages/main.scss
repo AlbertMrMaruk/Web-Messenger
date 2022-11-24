@@ -5,12 +5,18 @@
 @import "../pages/profile/profile.scss";
 @import "../components/chats/chat.scss";
 @import "../pages/chats/chats.scss";
+@import "../components/modal/modal.scss";
+@import "../components/message/message.scss";
 
 .body {
   background-color: $primary-color;
   font-family: $font-main;
   padding: 0;
   margin: 0;
+}
+
+.hidden {
+  display: none;
 }
 
 .container {
@@ -34,6 +40,11 @@
   .link-auth {
     font-size: 16px;
   }
+}
+
+.list-style-none {
+  list-style: none;
+  padding: 0;
 }
 
 .text {

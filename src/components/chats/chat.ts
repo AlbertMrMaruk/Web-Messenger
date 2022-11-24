@@ -1,16 +1,20 @@
 import Block from "../block";
 import chat from "./chat.tmpl";
 
-type chatType = {
+type ChatType = {
   chatName?: string;
+  avatar?: string;
   sender?: string;
   time?: string;
   message?: string;
+  link?: string;
   events?: {};
+  id?: string;
+  index?: string | number;
 };
 
-export default class Chat extends Block<chatType> {
-  constructor(props: chatType) {
+export default class Chat extends Block<ChatType> {
+  constructor(props: ChatType) {
     super("div", props);
   }
 

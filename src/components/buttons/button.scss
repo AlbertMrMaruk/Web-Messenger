@@ -34,16 +34,50 @@
     }
   }
 
+  &-create-chats {
+    border: none;
+    width: 20px;
+    height: 20px;
+    padding: 15px;
+  }
+
   &-circle {
-    border-radius: 60%;
-    width: 35px;
-    height: 35px;
-    border: 8px solid $primary-color;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 
     &-profile {
+      width: 35px;
+      height: 35px;
+      border: 8px solid $primary-color;
       position: absolute;
       top: 22rem;
       left: 14.5rem;
+      margin-top: 1rem;
+    }
+
+    &-icon {
+      font-size: 25px;
+    }
+
+    &-icon-chats {
+      font-size: 20px;
+    }
+
+    &-chats {
+      margin: 0;
+      font-size: 22px;
+      width: 15px;
+      height: 15px;
+      margin-left: 1rem;
+    }
+
+    &-submit {
+      border: none;
+      width: 45px;
+      height: 45px;
     }
   }
 }
