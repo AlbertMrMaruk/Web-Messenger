@@ -21,7 +21,6 @@
     "type": "git",
     "url": "git+https://github.com/AlbertMrMaruk/pract-module-1.git"
   },
-  "private": true,
   "author": "Albert Mr.",
   "license": "ISC",
   "bugs": {
