@@ -11,7 +11,7 @@ import ChatsController from "../../api/controlers/ChatsController";
 import store from "../../api/store";
 import UserController from "../../api/controlers/UserController";
 import Avatar from "../../components/avatar/avatar";
-import RouterManager from "../home/home";
+import RouterManager from "../../../index";
 import Link from "../../components/links/link";
 import Modal from "../../components/modal/modal";
 import Button from "../../components/buttons/button";

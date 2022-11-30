@@ -61,6 +61,9 @@ export default class Router {
   }
 
   use(pathname: string, view: any) {
+    if (typeof pathname !== "string") {
+      throw new Error("Pathname should be string");
+    }
     const route = new Route(pathname, view, { rootQuery: this._rootQuery });
     this.routes.push(route);
     return this;
@@ -70,9 +73,7 @@ export default class Router {
     window.onpopstate = (e: Event) => {
       const wind = e.currentTarget as Window;
       this._onRoute(wind.location.pathname);
-      console.log("CONTINUED");
     };
-    console.log("STARTED");
     this._onRoute(window.location.pathname);
   }
 

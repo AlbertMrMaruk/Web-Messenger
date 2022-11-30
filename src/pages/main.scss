@@ -7,6 +7,9 @@
 @import "../pages/chats/chats.scss";
 @import "../components/modal/modal.scss";
 @import "../components/message/message.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/solid.min.css";
+@import "../../node_modules/@fortawesome/fontawesome-free/css/brands.min.css";
 
 .body {
   background-color: $primary-color;
