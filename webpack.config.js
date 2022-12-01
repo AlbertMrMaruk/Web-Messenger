@@ -16,6 +16,9 @@ module.exports = {
     fallback: {
       fs: false,
     },
+    alias: {
+      "express-handlebars": "/node_modules/handlebars/dist/handlebars.js",
+    },
   },
   module: {
     rules: [
@@ -31,6 +34,7 @@ module.exports = {
         ],
         exclude: path.resolve(__dirname, "node_modules"),
       },
+      { test: /\.handlebars$/, loader: "handlebars-loader" },
       {
         test: /\.scss$/,
         use: [

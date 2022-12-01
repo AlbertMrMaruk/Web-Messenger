@@ -7,5 +7,6 @@ const { window } = new JSDOM('‹div id="app"></div>', {
   url: "http://localhost",
 });
 const { document } = window;
+global.XMLHttpRequest = window.XMLHttpRequest;
 global.window = window;
 global.document = document;

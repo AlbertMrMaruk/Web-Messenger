@@ -11,5 +11,5 @@ app.get("/*", (_, res) => {
 });
 
 app.listen(PORT, function () {
-  console.log(`Приложение запущено на порту  4000!`);
+  console.log(`Приложение запущено на порту  ${PORT}!`);
 });
