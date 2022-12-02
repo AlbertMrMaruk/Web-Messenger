@@ -8,7 +8,7 @@ import Input from "../../components/inputs/inputs";
 import ButtonIcon from "../../components/buttons/button-icon";
 import connect from "../../api/connect-block";
 import UserController from "../../api/controlers/UserController";
-import RouterManager from "../home/home";
+import RouterManager from "../../../index";
 import Modal from "../../components/modal/modal";
 import store from "../../api/store";
 import Avatar from "../../components/avatar/avatar";

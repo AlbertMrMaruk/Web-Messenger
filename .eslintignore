@@ -3,3 +3,5 @@
 /.parcel-cache
 /dist
 /server.js
+/serv
+/test/mock.js

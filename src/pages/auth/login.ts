@@ -8,7 +8,7 @@ import Input from "../../components/inputs/inputs";
 import UserController from "../../api/controlers/UserController";
 import LoginController from "../../api/controlers/LoginController";
 import connect from "../../api/connect-block";
-import RouterManager from "../home/home";
+import RouterManager from "../../../index";
 import store from "../../api/store";
 import Link from "../../components/links/link";
 

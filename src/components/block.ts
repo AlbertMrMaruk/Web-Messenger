@@ -97,7 +97,7 @@ class Block<Props extends { events?: {} }> {
     deleteChl?.forEach((el: string) => {
       delete this.children[el];
     });
-
+    console.log(deleteChl);
     this.props = this._makePropsProxy(props);
     this._render();
   }

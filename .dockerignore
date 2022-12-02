@@ -4,4 +4,6 @@
 /.prettierignore/
 /.DS_Store/
 .parcel-cache/data.mdb
-/serv/
+/README.MD
+/serv
+/Dockerfile

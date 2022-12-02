@@ -7,7 +7,7 @@ import blurFocusEvents from "../../utils/inputEventsHandler";
 import Input from "../../components/inputs/inputs";
 import connect from "../../api/connect-block";
 import UserController from "../../api/controlers/UserController";
-import RouterManager from "../home/home";
+import RouterManager from "../../../index";
 import Link from "../../components/links/link";
 
 type SignupType = {

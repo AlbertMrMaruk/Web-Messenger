@@ -1,4 +1,4 @@
-import Block from "../components/Block";
+import Block from "../components/block";
 export function render(query: string, block: Block<{}>) {
   const root = document.querySelector(query);
   root?.appendChild(block.getContent());

@@ -7,6 +7,7 @@
     "strictNullChecks": true,
     "esModuleInterop": true,
     "target": "es2022",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "types": ["mocha"]
   }
 }
